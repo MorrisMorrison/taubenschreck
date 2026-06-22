@@ -48,7 +48,9 @@ def _filter(cls, data: dict) -> dict:
 def load_config(path: str | Path) -> AppConfig:
     data = tomllib.loads(Path(path).read_text(encoding="utf-8"))
     safety_raw = data.pop("safety", {})
-    safety = SafetyConfig(**_filter(SafetyConfig, safety_raw))
+    time_keys = {"active_start", "active_end"}
+    safety_filtered = {k: v for k, v in _filter(SafetyConfig, safety_raw).items() if k not in time_keys}
+    safety = SafetyConfig(**safety_filtered)
     if "active_start" in safety_raw:
         safety = replace(safety, active_start=_parse_time(safety_raw["active_start"]))
     if "active_end" in safety_raw:
