@@ -1,7 +1,5 @@
 from datetime import datetime
 
-import numpy as np
-
 from taubenschreck.backend import db
 from taubenschreck.backend.controller import Controller
 from taubenschreck.backend.recorder import Recorder

@@ -24,3 +24,6 @@ include = ["taubenschreck*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+filterwarnings = [
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated:UserWarning:fastapi.testclient",
+]
