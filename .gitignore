@@ -1,0 +1,10 @@
+# venv & build
+.venv/
+*.egg-info/
+__pycache__/
+# runtime artifacts (never commit)
+*.db
+snapshots/
+config/config.toml
+# model weights download
+*.pt
