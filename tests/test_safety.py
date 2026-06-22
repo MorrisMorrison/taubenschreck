@@ -103,3 +103,20 @@ def test_fire_prunes_old_fire_times():
     _, new = evaluate([pigeon()], NOON, state, CFG)
     assert old not in new.fire_times
     assert NOON in new.fire_times
+
+
+def test_person_beats_disarmed():
+    # Highest-stakes precedence: a person must suppress firing even when the
+    # device is DISARMED, returning person_present (not disarmed).
+    state = SafetyState(armed=False, consecutive_pigeon_frames=5)
+    decision, _ = evaluate([pigeon(), person()], NOON, state, CFG)
+    assert decision.fire is False
+    assert decision.reason == "person_present"
+
+
+def test_outside_crossing_window_suppresses():
+    # Time in the daytime "gap" of a night window (22:00-06:00) must suppress.
+    cfg = SafetyConfig(persistence_frames=1, active_start=time(22, 0), active_end=time(6, 0))
+    two_pm = datetime(2026, 6, 22, 14, 0, 0)
+    decision, _ = evaluate([pigeon()], two_pm, SafetyState(armed=True), cfg)
+    assert decision.reason == "outside_window"
