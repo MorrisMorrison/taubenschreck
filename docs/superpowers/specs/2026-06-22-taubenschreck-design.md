@@ -77,7 +77,7 @@ Receives events over HTTP, stores them in SQLite and snapshots on disk, serves t
 
 ### Unit 4 — Dashboard + notifier
 - Web dashboard: pigeon counts over time, recent events with snapshot thumbnails, current armed state, and **manual arm/disarm + test-fire** controls.
-- Notifier: push on fire (ntfy or Telegram) + optional daily "N pigeons repelled" summary.
+- Notifier: push on fire (**ntfy**, self-hosted) + optional daily "N pigeons repelled" summary.
 
 **Reliability split:** Units 1+2 are self-contained and keep working if the network or the dashboard server is down. Units 3+4 are "nice to have up" but never block firing.
 
@@ -111,7 +111,7 @@ An inline switch that physically cuts pump power. No software, GPIO, or firmware
 
 ## 5. Software design
 
-**Stack:** Python 3.11+ · `ultralytics` (YOLOv8n) + OpenCV · `picamera2` / `gpiozero` on the Pi · `FastAPI` + SQLite for the backend/dashboard · `ntfy` or Telegram for push.
+**Stack:** Python 3.11+ · `ultralytics` (YOLOv8n) + OpenCV · `picamera2` / `gpiozero` on the Pi · `FastAPI` + SQLite for the backend/dashboard · `ntfy` for push (self-hosted instance).
 
 **Detection model:** start with the pretrained YOLOv8n COCO model, using the **`bird`** class as the pigeon proxy and **`person`** for suppression. Collect snapshots in the field, then optionally fine-tune a pigeon-specific model (Phase 3) for fewer false positives and earlier detection.
 
