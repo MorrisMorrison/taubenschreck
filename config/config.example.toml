@@ -1,0 +1,24 @@
+# Copy to config/config.toml and edit. config.toml is gitignored.
+frame_source = "webcam"    # "webcam" | "videofile"
+# video_path = "samples/pigeons.mp4"
+webcam_index = 0
+sprayer = "mock"           # Phase 1 is always "mock"
+model_weights = "yolov8n.pt"
+
+# Self-hosted ntfy topic URL. Leave unset to disable push.
+# ntfy_url = "https://ntfy.example.test/taubenschreck"
+
+snapshot_dir = "snapshots"
+db_path = "taubenschreck.db"
+host = "127.0.0.1"
+port = 8000
+
+[safety]
+pigeon_min_confidence = 0.5
+person_min_confidence = 0.3
+persistence_frames = 3
+active_start = "07:00"
+active_end = "21:00"
+burst_seconds = 1.5
+cooldown_seconds = 10.0
+max_bursts_per_hour = 30
