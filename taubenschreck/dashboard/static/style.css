@@ -1,0 +1,12 @@
+:root { font-family: system-ui, sans-serif; }
+body { margin: 0; padding: 1.5rem; max-width: 720px; margin-inline: auto; color: #1a1a1a; }
+header { display: flex; align-items: center; justify-content: space-between; }
+.badge { padding: .3rem .7rem; border-radius: 999px; font-weight: 600; background: #ddd; }
+.badge.armed { background: #d33; color: #fff; }
+.badge.disarmed { background: #2a2; color: #fff; }
+.controls button { font-size: 1rem; padding: .5rem 1rem; margin-right: .5rem; cursor: pointer; }
+button.danger { background: #d33; color: #fff; border: none; border-radius: 6px; }
+.stats { display: flex; gap: 1.5rem; margin: 1rem 0; }
+#events { list-style: none; padding: 0; }
+#events li { display: flex; gap: .8rem; align-items: center; padding: .4rem 0; border-bottom: 1px solid #eee; }
+#events img { width: 96px; height: 72px; object-fit: cover; border-radius: 4px; background: #eee; }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taubenschreck</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>🐦 Taubenschreck</h1>
+    <div id="armed-badge" class="badge">…</div>
+  </header>
+
+  <section class="controls">
+    <button id="arm-btn">Arm</button>
+    <button id="disarm-btn">Disarm</button>
+    <button id="test-fire-btn" class="danger">Test fire</button>
+  </section>
+
+  <section class="stats">
+    <div>Today: <span id="stat-today">–</span></div>
+    <div>Total: <span id="stat-total">–</span></div>
+    <div>Last: <span id="stat-last">–</span></div>
+  </section>
+
+  <h2>Recent events</h2>
+  <ul id="events"></ul>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

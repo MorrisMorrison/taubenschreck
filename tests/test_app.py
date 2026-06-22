@@ -47,3 +47,10 @@ def test_events_and_stats_endpoints(tmp_path):
     assert len(events) == 1
     stats = client.get("/api/stats").json()
     assert stats["total"] == 1
+
+
+def test_root_serves_dashboard(tmp_path):
+    client, _ = _client(tmp_path)
+    resp = client.get("/")
+    assert resp.status_code == 200
+    assert "Taubenschreck" in resp.text
